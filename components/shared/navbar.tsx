@@ -15,7 +15,7 @@ const Navbar = () => {
 							<Link href={link.href} key={link.label}>
 								<div className='flex items-center gap-1'>
 									<link.icon className='w-4 h-4 ' />
-									<h1 className='text-md font-medium  hover:underline hover:underline-offset-4 transition-all duration-400'>
+									<h1 className='text-sm font-medium  hover:underline hover:underline-offset-4 transition-all duration-400'>
 										{link.label}
 									</h1>
 								</div>
