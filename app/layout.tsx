@@ -2,6 +2,7 @@ import { ChildProps } from '@/types'
 import type { Metadata } from 'next'
 import { Montserrat, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import { ThemeProvider } from './providers/theme-provider'
 
 const spaceGrotesk = Space_Grotesk({
 	subsets: ['latin'],
@@ -22,11 +23,18 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: ChildProps) {
 	return (
-		<html lang='en'>
+		<html lang='en' suppressHydrationWarning>
 			<body
 				className={`${spaceGrotesk.variable} ${montserrat.variable} antialiased`}
 			>
-				{children}
+				<ThemeProvider
+					attribute='class'
+					defaultTheme='system'
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	)
