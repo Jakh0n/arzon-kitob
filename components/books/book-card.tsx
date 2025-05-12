@@ -49,7 +49,7 @@ export default function BookCard({ book }: BookCardProps) {
 		>
 			<Card
 				className={`
-          relative overflow-hidden rounded-lg bg-white 
+          relative overflow-hidden rounded-lg 
           transition-all duration-300 transform-gpu
           shadow-md hover:shadow-xl
           ${isHovered ? 'shadow-lg scale-105' : ''}
@@ -61,7 +61,6 @@ export default function BookCard({ book }: BookCardProps) {
 			>
 				<Link href={`/books/${book.slug}`} className='block'>
 					<div className='relative aspect-[3/4] overflow-hidden'>
-						<div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10' />
 						<Image
 							src={book.coverImage?.url || '/images/placeholder.jpg'}
 							alt={book.title}
@@ -84,12 +83,12 @@ export default function BookCard({ book }: BookCardProps) {
 						</div>
 
 						<p className='text-sm text-muted-foreground mb-4'>
-							{truncateText(book.description, 80)}
+							{truncateText(book.description, 70)}
 						</p>
 					</div>
 				</Link>
 
-				<div className='absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between bg-gradient-to-t from-white to-transparent pt-8'>
+				<div className='absolute bottom-0 left-0 right-0 p-4 flex items-center justify-between bg-gradient-to-t from-secondary to-transparent pt-8'>
 					<div className='font-bold text-lg'>{formatCurrency(book.price)}</div>
 					<Button
 						size='sm'
@@ -100,6 +99,7 @@ export default function BookCard({ book }: BookCardProps) {
             `}
 						onClick={e => {
 							e.preventDefault()
+
 							// Add to cart logic here
 						}}
 					>

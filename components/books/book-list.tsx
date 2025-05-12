@@ -10,9 +10,10 @@ interface BookListProps {
 	categories?: Category[]
 }
 
-export default function BookList({ books, categories = [] }: BookListProps) {
+const BookList = ({ books, categories = [] }: BookListProps) => {
 	const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 	const [filteredBooks, setFilteredBooks] = useState<Book[]>(books)
+	console.log(selectedCategory)
 
 	useEffect(() => {
 		// Filter books based on selected category
@@ -56,3 +57,5 @@ export default function BookList({ books, categories = [] }: BookListProps) {
 		</div>
 	)
 }
+
+export default BookList
