@@ -1,6 +1,8 @@
 import BookList from '@/components/books/book-list'
 import { getAllBooks, getAllCategories } from '@/lib/hygraph'
 
+export const revalidate = 2 // har 2 sekundda yangilanadi
+
 export const metadata = {
 	title: 'All Books - BookStore',
 	description: 'Browse our collection of books and find your next great read.',

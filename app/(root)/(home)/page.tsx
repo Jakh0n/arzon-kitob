@@ -1,6 +1,9 @@
 import BookList from '@/components/books/book-list'
 import { getAllBooks, getAllCategories } from '@/lib/hygraph'
 import BookHero from './_components/book-hero'
+
+export const revalidate = 3600 // har soatda yangilanadi
+
 const HomePage = async () => {
 	const books = await getAllBooks()
 	const categories = await getAllCategories()
