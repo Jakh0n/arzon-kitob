@@ -6,7 +6,7 @@ const HomePage = async () => {
 	const categories = await getAllCategories()
 
 	// Get a featured book (first book or any logic to determine a featured one)
-	const featuredBook = books[0]
+	const featuredBook = books[1]
 	console.log(featuredBook)
 
 	// Get the remaining books for the grid
@@ -14,7 +14,7 @@ const HomePage = async () => {
 
 	return (
 		<div className='flex flex-col gap-12 py-6'>
-			<section className='px-4 md:px-6'>
+			<section className='px-4 md:px-6 container '>
 				{featuredBook && <BookHero featuredBook={featuredBook} />}
 			</section>
 

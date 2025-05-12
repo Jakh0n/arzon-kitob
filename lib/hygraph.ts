@@ -5,12 +5,13 @@ import {
 	CategoriesQueryResponse,
 	Category,
 	CategoryQueryResponse,
-	HygraphResponse,
 } from '@/types'
 import { GraphQLClient } from 'graphql-request'
 
 // Replace with your actual Hygraph API endpoint
-const endpoint = process.env.HYGRAPH_ENDPOINT || ''
+const endpoint =
+	process.env.HYGRAPH_ENDPOINT ||
+	'https://us-west-2.cdn.hygraph.com/content/cmaf1bg0n01dg07w1rzx5zceu/master'
 
 // Initialize the GraphQL client
 const client = new GraphQLClient(endpoint)
@@ -42,10 +43,8 @@ export const getAllBooks = async (): Promise<Book[]> => {
   `
 
 	try {
-		const response = await client.request<HygraphResponse<BooksQueryResponse>>(
-			query
-		)
-		return response.data.books
+		const response = await client.request<BooksQueryResponse>(query)
+		return response.books
 	} catch (error) {
 		console.error('Error fetching books:', error)
 		return []
@@ -78,11 +77,8 @@ export const getBookBySlug = async (slug: string): Promise<Book | null> => {
   `
 
 	try {
-		const response = await client.request<HygraphResponse<BookQueryResponse>>(
-			query,
-			{ slug }
-		)
-		return response.data.book
+		const response = await client.request<BookQueryResponse>(query, { slug })
+		return response.book
 	} catch (error) {
 		console.error(`Error fetching book with slug ${slug}:`, error)
 		return null
@@ -101,10 +97,8 @@ export const getAllCategories = async (): Promise<Category[]> => {
   `
 
 	try {
-		const response = await client.request<
-			HygraphResponse<CategoriesQueryResponse>
-		>(query)
-		return response.data.categories
+		const response = await client.request<CategoriesQueryResponse>(query)
+		return response.categories
 	} catch (error) {
 		console.error('Error fetching categories:', error)
 		return []
@@ -139,10 +133,10 @@ export const getCategoryBySlug = async (
   `
 
 	try {
-		const response = await client.request<
-			HygraphResponse<CategoryQueryResponse>
-		>(query, { slug })
-		return response.data.category
+		const response = await client.request<CategoryQueryResponse>(query, {
+			slug,
+		})
+		return response.category
 	} catch (error) {
 		console.error(`Error fetching category with slug ${slug}:`, error)
 		return null

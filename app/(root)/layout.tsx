@@ -6,7 +6,7 @@ const Layout = ({ children }: ChildProps) => {
 	return (
 		<div className='relative flex min-h-screen flex-col'>
 			<Navbar />
-			<main className='flex-1'>{children}</main>
+			<main className='flex-1 mt-24'>{children}</main>
 			<Footer />
 		</div>
 	)
